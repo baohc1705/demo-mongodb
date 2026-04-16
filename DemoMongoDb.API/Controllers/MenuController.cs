@@ -1,4 +1,5 @@
 ﻿using DemoMongoDb.Application.Features.Menus.Commands.CreateMenu;
+using DemoMongoDb.Application.Features.Menus.Commands.DeleteMenu;
 using DemoMongoDb.Application.Features.Menus.Commands.UpdateMenu;
 using DemoMongoDb.Application.Features.Menus.Queries.GetAllMenus;
 using DemoMongoDb.Application.Features.Menus.Queries.GetMenuById;
@@ -48,6 +49,13 @@ namespace DemoMongoDb.API.Controllers
                 return BadRequest("Id not same");
             var res = await mediator.Send(command);
             return Ok(res);
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await mediator.Send(new DeleteMenuCommand() { Id = id });
+            return NoContent();
         }
     }
 }
