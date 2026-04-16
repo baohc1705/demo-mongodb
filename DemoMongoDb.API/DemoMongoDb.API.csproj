@@ -10,4 +10,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoMongoDb.Application\DemoMongoDb.Application.csproj" />
+    <ProjectReference Include="..\DemoMongoDb.Infrastructure\DemoMongoDb.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

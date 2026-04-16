@@ -5,6 +5,12 @@ VisualStudioVersion = 17.14.36221.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.API", "DemoMongoDb.API\DemoMongoDb.API.csproj", "{E4E39312-0C9B-4442-BA57-F1BD24D32123}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.Domain", "DemoMongoDb.Domain\DemoMongoDb.Domain.csproj", "{0E3A2AF7-1FC9-4AD0-A4EC-76F525096148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.Application", "DemoMongoDb.Application\DemoMongoDb.Application.csproj", "{DE6A9A68-8874-41AF-BB9C-79BF84D1FCC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.Infrastructure", "DemoMongoDb.Infrastructure\DemoMongoDb.Infrastructure.csproj", "{54896BEE-81D9-460F-A201-FBC1D2BD064B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{E4E39312-0C9B-4442-BA57-F1BD24D32123}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4E39312-0C9B-4442-BA57-F1BD24D32123}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4E39312-0C9B-4442-BA57-F1BD24D32123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3A2AF7-1FC9-4AD0-A4EC-76F525096148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3A2AF7-1FC9-4AD0-A4EC-76F525096148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3A2AF7-1FC9-4AD0-A4EC-76F525096148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3A2AF7-1FC9-4AD0-A4EC-76F525096148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6A9A68-8874-41AF-BB9C-79BF84D1FCC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6A9A68-8874-41AF-BB9C-79BF84D1FCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6A9A68-8874-41AF-BB9C-79BF84D1FCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6A9A68-8874-41AF-BB9C-79BF84D1FCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54896BEE-81D9-460F-A201-FBC1D2BD064B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54896BEE-81D9-460F-A201-FBC1D2BD064B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54896BEE-81D9-460F-A201-FBC1D2BD064B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54896BEE-81D9-460F-A201-FBC1D2BD064B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
