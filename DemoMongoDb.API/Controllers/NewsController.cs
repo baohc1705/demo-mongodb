@@ -30,5 +30,13 @@ namespace DemoMongoDb.API.Controllers
             var res = await mediator.Send(command);
             return Ok(res);
         }
+
+        [HttpPut("{id:length(24)}")]
+        public async Task<IActionResult> Put(string id, UpdateNewsCommand command)
+        {
+            if (id != command.Id) return BadRequest();
+            var res = await mediator.Send(command);
+            return Ok(res);
+        }
     }
 }
