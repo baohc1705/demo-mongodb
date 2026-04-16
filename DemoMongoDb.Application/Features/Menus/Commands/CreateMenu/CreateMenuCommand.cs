@@ -1,7 +1,7 @@
 ﻿using DemoMongoDb.Application.Features.Menus.DTOs;
 using MediatR;
 
-namespace DemoMongoDb.Application.Features.Menus.Commands
+namespace DemoMongoDb.Application.Features.Menus.Commands.CreateMenu
 {
     public record CreateMenuCommand(
         string Name,

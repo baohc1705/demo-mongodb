@@ -4,7 +4,7 @@ using DemoMongoDb.Domain.Entities;
 using DemoMongoDb.Domain.Interfaces;
 using MediatR;
 
-namespace DemoMongoDb.Application.Features.Menus.Commands
+namespace DemoMongoDb.Application.Features.Menus.Commands.CreateMenu
 {
     public class CreateMenuCommandHandler : IRequestHandler<CreateMenuCommand, MenuDto>
     {

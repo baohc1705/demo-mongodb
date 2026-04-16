@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using DemoMongoDb.Application.Features.Menus.Commands;
+using DemoMongoDb.Application.Features.Menus.Commands.CreateMenu;
+using DemoMongoDb.Application.Features.Menus.Commands.UpdateMenu;
 using DemoMongoDb.Application.Features.Menus.DTOs;
 using DemoMongoDb.Domain.Entities;
 
@@ -12,6 +13,8 @@ namespace DemoMongoDb.Application.Commons.Mappings
             CreateMap<Menu, MenuDto>().ReverseMap();
 
             CreateMap<CreateMenuCommand, Menu>();
+
+            CreateMap<UpdateMenuCommand, Menu>();
         }
     }
 }
