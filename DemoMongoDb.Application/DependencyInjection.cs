@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DemoMongoDb.Application.Commons.Mappings;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace DemoMongoDb.Application
@@ -7,7 +8,10 @@ namespace DemoMongoDb.Application
     {
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
-           
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile(typeof(ApplicationMappingProfile));
+            });
 
             services.AddMediatR(cfg =>
             {
