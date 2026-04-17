@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option csharp_namespace = "DemoMongoDb.GrpcClient.Protos";
+
+package menu;
+
+service MenuService {
+	rpc GetAllMenus (GetAllMenusRequest) returns (GetAllMenusResponse);
+	rpc GetMenuById (GetMenuByIdRequest) returns (GetMenuByIdResponse);
+	rpc CreateMenu (CreateMenuRequest) returns (CreateMenuResponse);
+	rpc UpdateMenu (UpdateMenuRequest) returns (UpdateMenuResponse);
+	rpc DeleteMenuById (DeleteMenuByIdRequest) returns (DeleteMenuByIdResponse);
+}
+
+// menu document
+message MenuMessage {
+	string id = 1;
+	string name = 2;
+	string description = 3;
+	string url = 4;
+	int32 order = 5;
+	bool is_active = 6;
+	string created_at = 7;
+	string updated_at = 8;
+}
+
+
+// Get all menu
+message GetAllMenusRequest {}
+
+message GetAllMenusResponse {
+	repeated MenuMessage items = 1;
+}
+
+// Get by id
+message GetMenuByIdRequest {
+	string id = 1;
+}
+
+message GetMenuByIdResponse {
+	MenuMessage menu = 1;
+	bool found = 2;
+}
+
+// Create menu
+message CreateMenuRequest {
+	string name = 1;
+	string description = 2;
+	string url = 3;
+	int32 order = 4;
+	bool is_active = 5; 
+}
+
+message CreateMenuResponse {
+	string id = 1;
+}
+
+// Update menu
+message UpdateMenuRequest {
+	string id = 1;
+	string name = 2;
+	string description = 3;
+	string url = 4;
+	int32 order = 5;
+	bool is_active = 6; 
+}
+
+message UpdateMenuResponse {
+	string id = 1;
+}
+
+// Delete menu by id
+message DeleteMenuByIdRequest {
+	string id = 1;
+}
+
+message DeleteMenuByIdResponse {
+	bool success = 1;
+}

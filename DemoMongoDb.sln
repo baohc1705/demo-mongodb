@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.Infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.Grpc", "DemoMongoDb.Grpc\DemoMongoDb.Grpc.csproj", "{6D710A74-0B9F-4115-BBD2-9B8CFEEE6440}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMongoDb.GrpcClient", "DemoMongoDb.GrpcClient\DemoMongoDb.GrpcClient.csproj", "{3B837EFE-82E5-4042-BD9C-D94420776FA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6D710A74-0B9F-4115-BBD2-9B8CFEEE6440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D710A74-0B9F-4115-BBD2-9B8CFEEE6440}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D710A74-0B9F-4115-BBD2-9B8CFEEE6440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B837EFE-82E5-4042-BD9C-D94420776FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B837EFE-82E5-4042-BD9C-D94420776FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B837EFE-82E5-4042-BD9C-D94420776FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B837EFE-82E5-4042-BD9C-D94420776FA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
