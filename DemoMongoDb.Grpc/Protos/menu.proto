@@ -6,8 +6,10 @@ package menu;
 
 service MenuService {
 	rpc GetAllMenus (GetAllMenusRequest) returns (GetAllMenusResponse);
+	rpc GetMenuById (GetMenuByIdRequest) returns (GetMenuByIdResponse);
 }
 
+// menu document
 message MenuMessage {
 	string id = 1;
 	string name = 2;
@@ -19,8 +21,20 @@ message MenuMessage {
 	string updated_at = 8;
 }
 
+
+// Get all menu
 message GetAllMenusRequest {}
 
 message GetAllMenusResponse {
 	repeated MenuMessage items = 1;
+}
+
+// Get by id
+message GetMenuByIdRequest {
+	string id = 1;
+}
+
+message GetMenuByIdResponse {
+	MenuMessage menu = 1;
+	bool found = 2;
 }

@@ -1,4 +1,5 @@
 ﻿using DemoMongoDb.Application.Features.Menus.Queries.GetAllMenus;
+using DemoMongoDb.Application.Features.Menus.Queries.GetMenuById;
 using DemoMongoDb.Grpc.Protos;
 using Grpc.Core;
 using MediatR;
@@ -31,6 +32,28 @@ namespace DemoMongoDb.Grpc.Services
             }));
 
             return response;
+        }
+
+        public override async Task<GetMenuByIdResponse> GetMenuById(GetMenuByIdRequest request, ServerCallContext context)
+        {
+            var menu = await mediator.Send(new GetMenuByIdQuery() { Id = request.Id });
+            if (menu == null) 
+                return new GetMenuByIdResponse() { Found = false };
+            return new GetMenuByIdResponse
+            {
+                Found = true,
+                Menu = new MenuMessage
+                {
+                    Id = menu.Id,
+                    Name = menu.Name,
+                    Description = menu.Description,
+                    Url = menu.Url,
+                    Order = menu.Order,
+                    IsActive = menu.IsActive,
+                    CreatedAt = menu.CreatedAt.ToShortDateString(),
+                    UpdatedAt = menu.UpdatedAt.ToShortDateString(),
+                }
+            };
         }
     }
 }
