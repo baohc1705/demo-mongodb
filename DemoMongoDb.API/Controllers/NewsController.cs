@@ -1,4 +1,5 @@
 ﻿using DemoMongoDb.Application.Features.New.Commands;
+using DemoMongoDb.Application.Features.New.Commands.DeleteNews;
 using DemoMongoDb.Application.Features.New.Queries.GetAllNews;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,20 @@ namespace DemoMongoDb.API.Controllers
             if (id != command.Id) return BadRequest();
             var res = await mediator.Send(command);
             return Ok(res);
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await mediator.Send(new DeleteNewsByIdCommand(id));
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }

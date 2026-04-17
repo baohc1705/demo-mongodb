@@ -19,6 +19,12 @@ namespace DemoMongoDb.Application.Features.New.Commands.CreateNews
         {
             var news = mapper.Map<News>(request);
 
+            if (request.IsPublished)
+                news.PublishedAt = DateTime.Now;
+
+            news.CreatedAt = DateTime.Now;
+            news.UpdatedAt = DateTime.Now;
+
             await newsRepository.CreateAsync(news);
 
             return mapper.Map<NewsDto>(news);
