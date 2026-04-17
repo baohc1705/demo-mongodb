@@ -21,6 +21,9 @@ namespace DemoMongoDb.Application.Features.Menus.Commands.CreateMenu
         {
             var menu = mapper.Map<Menu>(request);
 
+            menu.UpdatedAt = DateTime.UtcNow;
+            menu.CreatedAt = DateTime.UtcNow;
+
             await menuRepository.CreateAsync(menu);
 
             return mapper.Map<MenuDto>(menu);
