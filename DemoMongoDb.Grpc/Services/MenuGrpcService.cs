@@ -1,4 +1,7 @@
-﻿using DemoMongoDb.Application.Features.Menus.Queries.GetAllMenus;
+﻿using DemoMongoDb.Application.Features.Menus.Commands.CreateMenu;
+using DemoMongoDb.Application.Features.Menus.Commands.DeleteMenu;
+using DemoMongoDb.Application.Features.Menus.Commands.UpdateMenu;
+using DemoMongoDb.Application.Features.Menus.Queries.GetAllMenus;
 using DemoMongoDb.Application.Features.Menus.Queries.GetMenuById;
 using DemoMongoDb.Grpc.Protos;
 using Grpc.Core;
@@ -37,7 +40,7 @@ namespace DemoMongoDb.Grpc.Services
         public override async Task<GetMenuByIdResponse> GetMenuById(GetMenuByIdRequest request, ServerCallContext context)
         {
             var menu = await mediator.Send(new GetMenuByIdQuery() { Id = request.Id });
-            if (menu == null) 
+            if (menu == null)
                 return new GetMenuByIdResponse() { Found = false };
             return new GetMenuByIdResponse
             {
@@ -54,6 +57,46 @@ namespace DemoMongoDb.Grpc.Services
                     UpdatedAt = menu.UpdatedAt.ToShortDateString(),
                 }
             };
+        }
+
+        public override async Task<CreateMenuResponse> CreateMenu(CreateMenuRequest request, ServerCallContext context)
+        {
+            var menuSaved = await mediator.Send(new CreateMenuCommand(
+                request.Name,
+                request.Description,
+                request.Url,
+                request.Order,
+                request.IsActive
+            ));
+
+            return new CreateMenuResponse { Id = menuSaved.Id };
+        }
+
+        public override async Task<UpdateMenuResponse> UpdateMenu(UpdateMenuRequest request, ServerCallContext context)
+        {
+            var menuUpdated = await mediator.Send(new UpdateMenuCommand(
+                request.Id,
+                request.Name,
+                request.Description,
+                request.Url,
+                request.Order,
+                request.IsActive
+            ));
+
+            return new UpdateMenuResponse { Id = menuUpdated.Id };
+        }
+
+        public override async Task<DeleteMenuByIdResponse> DeleteMenuById(DeleteMenuByIdRequest request, ServerCallContext context)
+        {
+            try
+            {
+                await mediator.Send(new DeleteMenuCommand { Id = request.Id });
+                return new DeleteMenuByIdResponse { Success = true }; 
+            }
+            catch (Exception ex)
+            {
+                return new DeleteMenuByIdResponse { Success = false };
+            }
         }
     }
 }
