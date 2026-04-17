@@ -8,7 +8,7 @@ namespace DemoMongoDb.GrpcClient
         static async Task Main(string[] args)
         {
             // Tao dia chi cua gRPC Service
-            var address = "http://localhost:5290";
+            var address = "http://localhost:5002";
 
             // Tao chanel
             var chanel = GrpcChannel.ForAddress(address);
