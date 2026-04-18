@@ -162,3 +162,61 @@ db.menus.find()
 
 - Client được xây dựng bằng Console App C# tương tác với gRPC Service
 ---
+
+# Báo Cáo Nghiên Cứu
+## [18/04/2026]
+
+**Mục tiêu:** 
+- Tìm hiểu về Message Broker là gì?
+- Tìm hiểu RabbitMQ là gì? Tại sao lại sử dụng?
+- Tìm hiểu các cơ chế định tuyến (Fanout, Direct, Topic, Headers)
+- Thực hành tích hợp RabbitMQ vào dự án demo trước đó.
+
+## Phần 1: Tổng hợp kết quả
+
+| # | Task | Chi tiết  | Trạng thái |
+|---|----------------|----------------------|------------|
+| 1 | **Message Broker là gì** | Hiểu tại sao được sử dụng | Đã xong |
+| 2 | **RabbitMQ là gì? Tại sao lại sử dụng?** | Cài đặt Rabbit MQ trên môi trường Docker | Đã xong |
+| 3 | **Cơ chế định tuyến (Fanout, Direct, Topic, Headers)** | Các loại của Exchange Rabbit MQ | Chưa hoàn thành |
+| 3 | **Tích hợp RabbitMQ vào dự án demo** | - | Chưa hoàn thành |
+
+## Phần 2: Chi tiết
+
+### 1. Tìm hiểu về Message Broker là gì?
+
+Message Broker là một phần mềm trung gian (middleware) đóng vai trò làm cầu nối giữa các ứng dụng/dịch vụ, cho phép chúng giao tiếp với nhau mà không cần biết về nhau trực tiếp.
+
+Thay vì Service A gọi thẳng vào Service B (tight coupling), A chỉ cần "ném" message vào broker, còn broker sẽ lo việc chuyển đến đúng đích.
+
+#### Các vấn đề được Message Broker giải quyết:
+
+- `Decoupling`: Producer và Consumer không cần biết nhau tồn tại
+- `Buffering`: Khi Consumer bận, message được lưu tạm, không bị mất
+- `Scalability`: Nhiều Consumer có thể xử lý song song
+- `Reliability`: Đảm bảo message được giao ít nhất một lần
+- `Load balancing`: Phân phối tải đều giữa nhiều Consumer
+
+
+### 2. Tìm hiểu RabbitMQ là gì? Tại sao lại sử dụng?
+
+RabbitMQ là một Message Broker mã nguồn mở implement theo chuẩn giao thức AMQP (Advanced Message Queuing Protocol). 
+
+RabbitMQ là một Message Broker: nó chấp nhận và chuyển tiếp tin nhắn. Xem như một bưu điện: khi bạn đặt bức thư bạn muốn gửi vào hộp thư, bạn có thể chắc chắn rằng người vận chuyển thư cuối cùng sẽ chuyển thư đến người nhận của bạn. Theo cách tương tự này, RabbitMQ là một hộp thư, một bưu điện và một người vận chuyển thư.
+
+| Thành phần | Vai trò | 
+|---|----------------|
+| Producer | Ứng dụng gửi message |
+| Exchange | Nhận message từ Producer, quyết định route đi đâu |
+| Queue | Hàng chờ lưu message cho Consumer |
+| Binding | Quy tắc kết nối Exchange → Queue |
+| Consumer | Ứng dụng nhận và xử lý message |
+
+### 3. Các cơ chế định tuyến (Exchange Types)
+
+| Exchange | Routing key | Dùng khi nào |
+|---|----------------|-----------|
+| Fanout | Bỏ qua | Broadcast: notification, event log, real-time feed |
+| Direct | Khớp chính xác | Log theo level, phân luồng task rõ ràng |
+| Topic | Pattern * và # | Microservices phức tạp, multi-tenant routing |
+| Headers | Không dùng (dùng headers) | Routing theo metadata, filter phức tạp |

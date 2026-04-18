@@ -18,7 +18,7 @@ namespace DemoMongoDb.Infrastructure
 
 
             services.Configure<MongoDbSettings>(
-                configuration.GetSection("MongoSettings")
+                configuration.GetSection(nameof(MongoDbSettings))
             );
 
 
